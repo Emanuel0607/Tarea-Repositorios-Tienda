@@ -112,9 +112,10 @@ public class Inventario {
 
         //if para verificar si hay suficientes unidades
         if (unidades > producto.getContidadDisponible()) {
-            JOptionPane.showMessageDialog(null, "No hay suficientes unnidades dsiponibles.\n"
+            JOptionPane.showMessageDialog(null, "No hay suficientes unidades disponibles.\n"
                     + "Cantidad disponible: " + producto.getContidadDisponible());
 
+            return;
         }
 
         //Quitar una existencia cuando se venda un producto
@@ -126,8 +127,8 @@ public class Inventario {
 
     }
 
-    //rellenar un producto
-    public void rellenarProducto(int codigo, int unidades) {
+    //reabastecer un producto
+    public void reabastecerProducto(int codigo, int unidades) {
 
         //buscar el producto
         Producto producto = buscarProducto(codigo);
@@ -150,21 +151,21 @@ public class Inventario {
         //Aunmentar las existencas del producto
         producto.setContidadDisponible(producto.getContidadDisponible() + unidades);
 
-        JOptionPane.showMessageDialog(null, "Producto rellenado correctamente.\n"
+        JOptionPane.showMessageDialog(null, "Producto reabastecido correctamente.\n"
                 + "Cantidad disponible: " + producto.getContidadDisponible());
 
     }
-    
+
     //Calcular el valor del inventario
     public double calcularInventario() {
-    
+
         double total = 0;
-        
+
         for (int i = 0; i < cantidad; i++) {
-        
+
             total += productos[i].getPrecio() * productos[i].getContidadDisponible();
         }
-        
+
         return total;
     }
 
